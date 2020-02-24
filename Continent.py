@@ -1,21 +1,29 @@
 from Territory import TERRITORY
+from Constants import CONSTANTS
+
+constants = CONSTANTS()
 
 
 class CONTINENT:
     def __init__(self, name, territories):
         self.name = name
-        if name.lower() == "asia":
-            self.territories = []
-        if name.lower() == "north america":
-            self.territories = []
-        if name.lower() == "south america":
-            self.territories = []
-        if name.lower() == "europe":
-            self.territories = []
+        if self.name.lower() == "asia":
+            self.territories = constants.asia
+
+        if self.name.lower() == "north america":
+            self.territories = constants.northAmerica
+
+        if self.name.lower() == "south america":
+            self.territories = constants.southAmerica
+
+        if self.name.lower() == "europe":
+            self.territories = constants.europe
+
         if name.lower() == "africa":
-            self.territories = []
+            self.territories = constants.africa
+
         if name.lower() == "australia":
-            self.territories = []
+            self.territories = constants.australia
 
     def getName(self):
         return self.name

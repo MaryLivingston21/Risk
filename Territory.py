@@ -9,3 +9,4 @@ class TERRITORY:
 
     def getConnectingTerritories(self):
         return self.connectingTerritories
+
