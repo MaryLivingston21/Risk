@@ -2,7 +2,7 @@ from Territory import TERRITORY
 
 
 class USER:
-    ## color???
+    # color???
     def __init__(self, name, territories, cards):
         self.name = name
         self.territories = territories
@@ -11,8 +11,22 @@ class USER:
     def getName(self):
         return self.name
 
+    #territory setters and getters
+    def addTerritory(self, territory):
+        self.territories.append(territory)
+
+    def removeTerritory(self, territory):
+        self.territories.remove(territory)
+
     def getTerritories(self):
         return self.territories
+
+    #Card setters and getters
+    def addCard(self, card):
+        self.cards.append(card)
+
+    def removeCard(self, card):
+        self.cards.remove(card)
 
     def getCards(self):
         return self.cards
