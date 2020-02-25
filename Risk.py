@@ -28,9 +28,12 @@ class RISK:
 
     def getCards(self, user):
         i = 1
-        #add card to user Deck iff they won an attack
-
+        # add card to user Deck iff they won an attack
 
     def turnInCards(self, userDeck):
         self.numSetsTurnedIn = self.numSetsTurnedIn + 1
         # turn in cards function
+
+    # remove user when defeated
+    def removeUser(self, user):
+        self.users.remove(user)

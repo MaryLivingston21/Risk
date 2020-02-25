@@ -11,7 +11,7 @@ class USER:
     def getName(self):
         return self.name
 
-    #territory setters and getters
+    # Territory setters and getters
     def addTerritory(self, territory):
         self.territories.append(territory)
 
@@ -21,7 +21,7 @@ class USER:
     def getTerritories(self):
         return self.territories
 
-    #Card setters and getters
+    # Card setters and getters
     def addCard(self, card):
         self.cards.append(card)
 
