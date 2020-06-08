@@ -21,6 +21,23 @@ class USER:
     def getTerritories(self):
         return self.territories
 
+    # Troop setters and getters
+    def addTroops(self, territory, numTroops):
+        for t in self.territories:
+            if t.getName() == territory.getName():
+                t.addTroops(numTroops)
+
+    def removeTroops(self, territory, numTroops):
+        for t in self.territories:
+            if t.getName() == territory.getName():
+                t.removeTroops(numTroops)
+
+    def getTroops(self, territory):
+        for t in self.territories:
+            if t.getName() == territory.getName():
+                return t.getNumTroops()
+        return None
+
     # Card setters and getters
     def addCard(self, card):
         self.cards.append(card)

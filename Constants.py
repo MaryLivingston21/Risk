@@ -1,23 +1,34 @@
+from Continent import CONTINENT
+
+
+def getConnectedCountries(countryName):
+    for i in CONSTANTS.listOfTerritories:
+        if CONSTANTS.listOfTerritories[i] == countryName:
+            return CONSTANTS.adjacencyList[i]
+    return None
+
+
 class CONSTANTS:
     listOfTerritories = ["Afghanistan", "China", "India", "Irkutsk", "Japan",
-                                  "Kamchatka", "Middle East", "Mongolia", "Siam", "Siberia",
-                                  "Ural", "Yakutsk", "Alaska", "Alberta", "Central America",
-                                  "Eastern United States", "Greenland", "Northwest Territory",
-                                  "Ontario", "Quebec", "Western United States", "Argentina",
-                                  "Brazil", "Peru", "Venezuela", "Great Britain", "Iceland",
-                                  "Northern Europe", "Scandinavia", "Southern Europe", "Ukraine",
-                                  "Western Europe", "Congo", "East Africa", "Egypt", "Madagascar",
-                                  "North Africa", "South Africa", "Eastern Australia", "Indonesia",
-                                  "New Guinea", "Western Australia"]
-    asia = ["Afghanistan", "China", "India", "Irkutsk", "Japan", "Kamchatka", "Middle East",
-            "Mongolia", "Siam", "Siberia", "Ural", "Yakutsk"]
-    northAmerica = ["Alaska", "Alberta", "Central America", "Eastern United States", "Greenland",
-                    "Northwest Territory", "Ontario", "Quebec", "Western United States"]
-    southAmerica = ["Argentina", "Brazil", "Peru", "Venezuela"]
-    europe = ["Great Britain", "Iceland", "Northern Europe", "Scandinavia", "Southern Europe",
-              "Ukraine", "Western Europe"]
-    africa = ["Congo", "East Africa", "Egypt", "Madagascar", "North Africa", "South Africa"]
-    australia = ["Eastern Australia", "Indonesia", "New Guinea", "Western Australia"]
+                         "Kamchatka", "Middle East", "Mongolia", "Siam", "Siberia",
+                         "Ural", "Yakutsk", "Alaska", "Alberta", "Central America",
+                         "Eastern United States", "Greenland", "Northwest Territory",
+                         "Ontario", "Quebec", "Western United States", "Argentina",
+                         "Brazil", "Peru", "Venezuela", "Great Britain", "Iceland",
+                         "Northern Europe", "Scandinavia", "Southern Europe", "Ukraine",
+                         "Western Europe", "Congo", "East Africa", "Egypt", "Madagascar",
+                         "North Africa", "South Africa", "Eastern Australia", "Indonesia",
+                         "New Guinea", "Western Australia"]
+    asia = CONTINENT("asia", ["Afghanistan", "China", "India", "Irkutsk", "Japan", "Kamchatka", "Middle East",
+                              "Mongolia", "Siam", "Siberia", "Ural", "Yakutsk"])
+    northAmerica = CONTINENT("north america",
+                             ["Alaska", "Alberta", "Central America", "Eastern United States", "Greenland",
+                              "Northwest Territory", "Ontario", "Quebec", "Western United States"])
+    southAmerica = CONTINENT("south america", ["Argentina", "Brazil", "Peru", "Venezuela"])
+    europe = CONTINENT("europe", ["Great Britain", "Iceland", "Northern Europe", "Scandinavia", "Southern Europe",
+                                  "Ukraine", "Western Europe"])
+    africa = CONTINENT("africa", ["Congo", "East Africa", "Egypt", "Madagascar", "North Africa", "South Africa"])
+    australia = CONTINENT("australia", ["Eastern Australia", "Indonesia", "New Guinea", "Western Australia"])
 
     # make adjacency list
     Afghanistan = ["Ukraine", "Ural", "China", "India", "Middle East"]
@@ -37,8 +48,9 @@ class CONSTANTS:
     CentralAmerica = ["Western United States", "Eastern United States", "Venezuela"]
     EasternUnitedStates = ["Central America", "Western United States", "Ontario", "Quebec"]
     Greenland = ["Northwest Territory", "Ontario", "Quebec", "Iceland"]
-    NorthwestTerritory =["Alaska", "Alberta", "Greenland", "Ontario"]
-    Ontario = ["Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States", "Alberta"]
+    NorthwestTerritory = ["Alaska", "Alberta", "Greenland", "Ontario"]
+    Ontario = ["Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States",
+               "Alberta"]
     Quebec = ["Ontario", "Greenland", "Eastern United States"]
     WesternUnitedStates = ["Alberta", "Ontario", "Eastern United States", "Central America"]
     Argentina = ["Peru", "Brazil"]
@@ -63,11 +75,20 @@ class CONSTANTS:
     NewGuinea = ["Indonesia", "Eastern Australia", "Western Australia"]
     WesternAustralia = ["Eastern Australia", "New Guinea", "Indonesia"]
 
-    AdjacencyList = [Afghanistan, China, India, Irkutsk, Japan, Kamchatka, MiddleEast, Mongolia, Siam, Siberia,
+    adjacencyList = [Afghanistan, China, India, Irkutsk, Japan, Kamchatka, MiddleEast, Mongolia, Siam, Siberia,
                      Ural, Yakutsk, Alaska, Alberta, CentralAmerica, EasternUnitedStates, Greenland,
                      NorthwestTerritory, Ontario, Quebec, WesternUnitedStates, Argentina, Brazil, Peru,
                      Venezuela, GreatBritain, Iceland, NorthernEurope, Scandinavia, SouthernEurope, Ukraine,
                      WesternEurope, Congo, EastAfrica, Egypt, Madagascar, NorthAfrica, SouthAfrica,
                      EasternAustralia, Indonesia, NewGuinea, WesternAustralia]
 
-
+    @classmethod
+    def getNumTroops(cls, numPlayers):
+        if numPlayers == 3:
+            return 35
+        elif numPlayers == 4:
+            return 30
+        elif numPlayers == 5:
+            return 25
+        else:
+            return 20

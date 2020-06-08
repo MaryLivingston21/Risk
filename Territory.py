@@ -1,14 +1,9 @@
 class TERRITORY:
 
-    def __init__(self, name, connectingTerritories):
+    def __init__(self, name, user):
         self.name = name
-        self.connectingTerritories = connectingTerritories
-        self.user = ""
-
-    def __init__(self, name, connectingTerritories, user):
-        self.name = name
-        self.connectingTerritories = connectingTerritories
         self.user = user
+        self.numTroops = 1
 
     def setUser(self, user):
         self.user = user
@@ -19,6 +14,11 @@ class TERRITORY:
     def getName(self):
         return self.name
 
-    def getConnectingTerritories(self):
-        return self.connectingTerritories
+    def getNumTroops(self):
+        return self.numTroops
 
+    def addTroops(self, num):
+        self.numTroops = self.numTroops + num
+
+    def removeTroops(self, num):
+        self.numTroops = self.numTroops - num

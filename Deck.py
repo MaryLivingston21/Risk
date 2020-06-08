@@ -7,6 +7,7 @@ class DECK:
 
     def __init__(self):
         self.cards = []
+        self.initializeDeck()
 
     def addCard(self, card):
         self.cards.append(card)
@@ -26,7 +27,7 @@ class DECK:
             else:
                 self.cards.append(CARD(territory, "Artillery"))
             # increment i
-            if (i != 3):
+            if i != 3:
                 i = i + 1
             else:
                 i = 1

@@ -3,19 +3,21 @@ from User import USER
 
 
 def main():
-    users = getUsers()
-    game = RISK(users)
+    playerNames = getUsers()
+    game = RISK(playerNames)
+
+    # for user in game.getPlayers():
+    #     print("user: " + user.getName())
+    #     print("territories: ")
+    #     for territory in user.getTerritories():
+    #         print(territory.getName() + ": " + str(territory.getNumTroops()) + " ")
 
 
 def getUsers():
-    numUsers = ""
-    users = []
+    numUsers = 0
+    playerNames = []
 
-    List = []
-    for i in range(2, 7):
-        List.append(i)
-
-    while numUsers not in List:
+    while numUsers > 7 or numUsers < 3:
         try:
             numUsers = int(input("Input number of users(2-6): "))
         except ValueError:
@@ -23,11 +25,9 @@ def getUsers():
 
     for i in range(1, numUsers + 1):
         name = input("Input player " + str(i) + "'s name")
-        t = []
-        c = []
-        users.append(USER(name, t, c))
+        playerNames.append(name)
 
-    return users
+    return playerNames
 
 
 main()
