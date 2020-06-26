@@ -66,8 +66,11 @@ class RISK:
             print(c.getName() + ": ")
             if c.isOwnedByPlayer(user):
                 print("true")
+                numTroops = numTroops + c.getDraftPoints()
             else:
                 print("false")
+
+        #TODO: trade in cards
 
     def attack(self, user):
         i = 1

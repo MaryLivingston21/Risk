@@ -6,6 +6,9 @@ class CONTINENT:
         self.territories = territories
         self.draftPoints = draftPoints
 
+    def getDraftPoints(self):
+        return self.draftPoints
+
     def getName(self):
         return self.name
 
