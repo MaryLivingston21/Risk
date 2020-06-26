@@ -1,86 +1,75 @@
 from Continent import CONTINENT
-
-
-def getConnectedCountries(countryName):
-    for i in CONSTANTS.listOfTerritories:
-        if CONSTANTS.listOfTerritories[i] == countryName:
-            return CONSTANTS.adjacencyList[i]
-    return None
+from Territory import TERRITORY
 
 
 class CONSTANTS:
-    listOfTerritories = ["Afghanistan", "China", "India", "Irkutsk", "Japan",
-                         "Kamchatka", "Middle East", "Mongolia", "Siam", "Siberia",
-                         "Ural", "Yakutsk", "Alaska", "Alberta", "Central America",
-                         "Eastern United States", "Greenland", "Northwest Territory",
-                         "Ontario", "Quebec", "Western United States", "Argentina",
-                         "Brazil", "Peru", "Venezuela", "Great Britain", "Iceland",
-                         "Northern Europe", "Scandinavia", "Southern Europe", "Ukraine",
-                         "Western Europe", "Congo", "East Africa", "Egypt", "Madagascar",
-                         "North Africa", "South Africa", "Eastern Australia", "Indonesia",
-                         "New Guinea", "Western Australia"]
-    asia = CONTINENT("asia", ["Afghanistan", "China", "India", "Irkutsk", "Japan", "Kamchatka", "Middle East",
-                              "Mongolia", "Siam", "Siberia", "Ural", "Yakutsk"])
+    # initialize territories
+    Afghanistan = TERRITORY("afghanistan", "", ["Ukraine", "Ural", "China", "India", "Middle East"])
+    China = TERRITORY("china", "", ["Afghanistan", "Ural", "Siberia", "Mongolia", "Siam", "India"])
+    India = TERRITORY("india", "", ["Middle East", "Afghanistan", "China", "Siam"])
+    Irkutsk = TERRITORY("irkutsk", "", ["Siberia", "Mongolia", "Kamchatka", "Yakutsk"])
+    Japan = TERRITORY("japan", "", ["Kamchatka", "Mongolia"])
+    Kamchatka = TERRITORY("kamchatka", "", ["Yakutsk", "Irkutsk", "Mongolia", "Japan", "Alaska"])
+    MiddleEast = TERRITORY("middle east", "", ["Ukraine", "Afghanistan", "India", "Egypt", "Southern Europe"])
+    Mongolia = TERRITORY("mongolia", "", ["Japan", "China", "Siberia", "Irkutsk", "Kamchatka"])
+    Siam = TERRITORY("siam", "", ["China", "Indonesia", "India"])
+    Siberia = TERRITORY("siberia", "", ["Ural", "China", "Mongolia", "Irkutsk", "Yakutsk"])
+    Ural = TERRITORY("ural", "", ["Ukraine", "Afghanistan", "China", "Siberia"])
+    Yakutsk = TERRITORY("yakutsk", "", ["Siberia", "Irkutsk", "Kamchatka"])
+    Alaska = TERRITORY("alaska", "", ["Kamchatka", "Northwest Territory", "Alberta"])
+    Alberta = TERRITORY("alberta", "", ["Alaska", "Northwest Territory", "Ontario", "Western United States"])
+    CentralAmerica = TERRITORY("central america", "", ["Western United States", "Eastern United States", "Venezuela"])
+    EasternUnitedStates = TERRITORY("eastern united states", "", ["Central America", "Western United States", "Ontario", "Quebec"])
+    Greenland = TERRITORY("greenland", "", ["Northwest Territory", "Ontario", "Quebec", "Iceland"])
+    NorthwestTerritory = TERRITORY("northwest territory", "", ["Alaska", "Alberta", "Greenland", "Ontario"])
+    Ontario = TERRITORY("ontario", "", ["Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States",
+               "Alberta"])
+    Quebec = TERRITORY("quebec", "", ["Ontario", "Greenland", "Eastern United States"])
+    WesternUnitedStates = TERRITORY("western united states", "", ["Alberta", "Ontario", "Eastern United States", "Central America"])
+    Argentina = TERRITORY("argentina", "", ["Peru", "Brazil"])
+    Brazil = TERRITORY("brazil", "", ["Venezuela", "Peru", "Argentina", "North Africa"])
+    Peru = TERRITORY("peru", "", ["Venezuela", "Brazil", "Argentina"])
+    Venezuela = TERRITORY("venezuela", "", ["Central America", "Brazil", "Peru"])
+    GreatBritain = TERRITORY("great britain", "", ["Scandinavia", "Northern Europe", "Western Europe", "Iceland"])
+    Iceland = TERRITORY("iceland", "", ["Greenland", "Great Britain", "Scandinavia"])
+    NorthernEurope = TERRITORY("northern europe", "", ["Great Britain", "Scandinavia", "Ukraine", "Southern Europe", "Western Europe"])
+    Scandinavia = TERRITORY("scandinavia", "", ["Ukraine", "Northern Europe", "Iceland", "Great Britain"])
+    SouthernEurope = TERRITORY("southern europe", "", ["Ukraine", "Northern Europe", "Western Europe", "North Africa", "Egypt", "Middle East"])
+    Ukraine = TERRITORY("ukraine", "", ["Scandinavia", "Northern Europe", "Southern Europe", "Middle East", "Ural", "Afghanistan"])
+    WesternEurope = TERRITORY("western europe", "", ["Great Britain", "North Africa", "Southern Europe", "Northern Europe"])
+    Congo = TERRITORY("congo", "", ["North Africa", "East Africa", "South Africa"])
+    EastAfrica = TERRITORY("east africa", "", ["Egypt", "North Africa", "South Africa", "Madagascar", "Congo"])
+    Egypt = TERRITORY("egypt", "", ["Southern Europe", "North Africa", "East Africa", "Middle East"])
+    Madagascar = TERRITORY("madagascar", "", ["East Africa", "South Africa"])
+    NorthAfrica = TERRITORY("north africa", "", ["Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo"])
+    SouthAfrica = TERRITORY("south africa", "", ["Congo", "East Africa", "Madagascar"])
+    EasternAustralia = TERRITORY("eastern australia", "", ["Western Australia", "New Guinea"])
+    Indonesia = TERRITORY("indonesia", "", ["Siam", "New Guinea", "Western Australia"])
+    NewGuinea = TERRITORY("new guinea", "", ["Indonesia", "Eastern Australia", "Western Australia"])
+    WesternAustralia = TERRITORY("western australia", "", ["Eastern Australia", "New Guinea", "Indonesia"])
+
+    listOfTerritories = [Afghanistan, China, India, Irkutsk, Japan,
+                         Kamchatka, MiddleEast, Mongolia, Siam, Siberia,
+                         Ural, Yakutsk, Alaska, Alberta, CentralAmerica,
+                         EasternUnitedStates, Greenland, NorthwestTerritory,
+                         Ontario, Quebec, WesternUnitedStates, Argentina,
+                         Brazil, Peru, Venezuela, GreatBritain, Iceland,
+                         NorthernEurope, Scandinavia, SouthernEurope, Ukraine,
+                         WesternEurope, Congo, EastAfrica, Egypt, Madagascar,
+                         NorthAfrica, SouthAfrica, EasternAustralia, Indonesia,
+                         NewGuinea, WesternAustralia]
+
+    asia = CONTINENT("asia", [Afghanistan, China, India, Irkutsk, Japan, Kamchatka, MiddleEast,
+                              Mongolia, Siam, Siberia, Ural, Yakutsk], 7)
     northAmerica = CONTINENT("north america",
-                             ["Alaska", "Alberta", "Central America", "Eastern United States", "Greenland",
-                              "Northwest Territory", "Ontario", "Quebec", "Western United States"])
-    southAmerica = CONTINENT("south america", ["Argentina", "Brazil", "Peru", "Venezuela"])
-    europe = CONTINENT("europe", ["Great Britain", "Iceland", "Northern Europe", "Scandinavia", "Southern Europe",
-                                  "Ukraine", "Western Europe"])
-    africa = CONTINENT("africa", ["Congo", "East Africa", "Egypt", "Madagascar", "North Africa", "South Africa"])
-    australia = CONTINENT("australia", ["Eastern Australia", "Indonesia", "New Guinea", "Western Australia"])
-
-    # make adjacency list
-    Afghanistan = ["Ukraine", "Ural", "China", "India", "Middle East"]
-    China = ["Afghanistan", "Ural", "Siberia", "Mongolia", "Siam", "India"]
-    India = ["Middle East", "Afghanistan", "China", "Siam"]
-    Irkutsk = ["Siberia", "Mongolia", "Kamchatka", "Yakutsk"]
-    Japan = ["Kamchatka", "Mongolia"]
-    Kamchatka = ["Yakutsk", "Irkutsk", "Mongolia", "Japan", "Alaska"]
-    MiddleEast = ["Ukraine", "Afghanistan", "India", "Egypt", "Southern Europe"]
-    Mongolia = ["Japan", "China", "Siberia", "Irkutsk", "Kamchatka"]
-    Siam = ["China", "Indonesia", "India"]
-    Siberia = ["Ural", "China", "Mongolia", "Irkutsk", "Yakutsk"]
-    Ural = ["Ukraine", "Afghanistan", "China", "Siberia"]
-    Yakutsk = ["Siberia", "Irkutsk", "Kamchatka"]
-    Alaska = ["Kamchatka", "Northwest Territory", "Alberta"]
-    Alberta = ["Alaska", "Northwest Territory", "Ontario", "Western United States"]
-    CentralAmerica = ["Western United States", "Eastern United States", "Venezuela"]
-    EasternUnitedStates = ["Central America", "Western United States", "Ontario", "Quebec"]
-    Greenland = ["Northwest Territory", "Ontario", "Quebec", "Iceland"]
-    NorthwestTerritory = ["Alaska", "Alberta", "Greenland", "Ontario"]
-    Ontario = ["Northwest Territory", "Greenland", "Quebec", "Eastern United States", "Western United States",
-               "Alberta"]
-    Quebec = ["Ontario", "Greenland", "Eastern United States"]
-    WesternUnitedStates = ["Alberta", "Ontario", "Eastern United States", "Central America"]
-    Argentina = ["Peru", "Brazil"]
-    Brazil = ["Venezuela", "Peru", "Argentina", "North Africa"]
-    Peru = ["Venezuela", "Brazil", "Argentina"]
-    Venezuela = ["Central America", "Brazil", "Peru"]
-    GreatBritain = ["Scandinavia", "Northern Europe", "Western Europe", "Iceland"]
-    Iceland = ["Greenland", "Great Britain", "Scandinavia"]
-    NorthernEurope = ["Great Britain", "Scandinavia", "Ukraine", "Southern Europe", "Western Europe"]
-    Scandinavia = ["Ukraine", "Northern Europe", "Iceland", "Great Britain"]
-    SouthernEurope = ["Ukraine", "Northern Europe", "Western Europe", "North Africa", "Egypt", "Middle East"]
-    Ukraine = ["Scandinavia", "Northern Europe", "Southern Europe", "Middle East", "Ural", "Afghanistan"]
-    WesternEurope = ["Great Britain", "North Africa", "Southern Europe", "Northern Europe"]
-    Congo = ["North Africa", "East Africa", "South Africa"]
-    EastAfrica = ["Egypt", "North Africa", "South Africa", "Madagascar", "Congo"]
-    Egypt = ["Southern Europe", "North Africa", "East Africa", "Middle East"]
-    Madagascar = ["East Africa", "South Africa"]
-    NorthAfrica = ["Brazil", "Western Europe", "Southern Europe", "Egypt", "East Africa", "Congo"]
-    SouthAfrica = ["Congo", "East Africa", "Madagascar"]
-    EasternAustralia = ["Western Australia", "New Guinea"]
-    Indonesia = ["Siam", "New Guinea", "Western Australia"]
-    NewGuinea = ["Indonesia", "Eastern Australia", "Western Australia"]
-    WesternAustralia = ["Eastern Australia", "New Guinea", "Indonesia"]
-
-    adjacencyList = [Afghanistan, China, India, Irkutsk, Japan, Kamchatka, MiddleEast, Mongolia, Siam, Siberia,
-                     Ural, Yakutsk, Alaska, Alberta, CentralAmerica, EasternUnitedStates, Greenland,
-                     NorthwestTerritory, Ontario, Quebec, WesternUnitedStates, Argentina, Brazil, Peru,
-                     Venezuela, GreatBritain, Iceland, NorthernEurope, Scandinavia, SouthernEurope, Ukraine,
-                     WesternEurope, Congo, EastAfrica, Egypt, Madagascar, NorthAfrica, SouthAfrica,
-                     EasternAustralia, Indonesia, NewGuinea, WesternAustralia]
+                             [Alaska, Alberta, CentralAmerica, EasternUnitedStates, Greenland,
+                              NorthwestTerritory, Ontario, Quebec, WesternUnitedStates], 5)
+    southAmerica = CONTINENT("south america", [Argentina, Brazil, Peru, Venezuela], 2)
+    europe = CONTINENT("europe", [GreatBritain, Iceland, NorthernEurope, Scandinavia, SouthernEurope,
+                                  Ukraine, WesternEurope], 5)
+    africa = CONTINENT("africa", [Congo, EastAfrica, Egypt, Madagascar, NorthAfrica, SouthAfrica], 3)
+    australia = CONTINENT("australia", [EasternAustralia, Indonesia, NewGuinea, WesternAustralia], 2)
+    listOfContinents = [asia, northAmerica, southAmerica, europe, africa, australia]
 
     @classmethod
     def initializeNumTroops(cls, numPlayers):
@@ -93,13 +82,3 @@ class CONSTANTS:
         else:
             return 20
 
-    @classmethod
-    def getNumTroops(cls, user):
-        # get troops from territories occupied
-        numTerritories = len(user.getTerritories())
-        numTroops = numTerritories / 3
-        if numTroops < 3:
-            numTroops = 3
-        # get troops from continents held
-
-        return numTroops

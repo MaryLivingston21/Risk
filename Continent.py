@@ -1,7 +1,10 @@
 class CONTINENT:
-    def __init__(self, name, territories):
+    def __init__(self, name, territories, draftPoints):
         self.name = name
         self.territories = territories
+        self.draftPoints = draftPoints
+        self.criticalTerritoryNum = len(territories)
+        self.playerTerritoryCount  # length = num of players
 
     def getName(self):
         return self.name
@@ -10,23 +13,5 @@ class CONTINENT:
         return self.territories
 
     def isOwnedByOnePlayer(self):
-        boolean = True
-        user = self.territories[0].getUser()
-        for t in self.territories:
-            if t.getUser != user:
-                boolean = False
-        return boolean
-
-    def getPoints(self):
-        if self.name == "asia":
-            return 7
-        elif self.name == "north america" or self.name == "europe":
-            return 5
-        elif self.name == "africa":
-            return 3
-        elif self.name == "south american" or self.name == "australia":
-            return 2
-        else:
-            return 0
-
-
+        # if playerTerritoryCount[i] = criticalNum, owned by one player
+        return False

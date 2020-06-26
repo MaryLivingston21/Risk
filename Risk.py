@@ -16,30 +16,33 @@ def setUpPlayers(playerNames):
     numPlayers = len(playerNames)
     currentPlayer = 0
     territories = CONSTANTS.listOfTerritories
+    numTerritories = len(territories)
     # while still territories, give them to the players
-    while len(territories) != 0:
+    while territories != 0:
         # ensure playerNum is in range of players
         if currentPlayer == numPlayers:
             currentPlayer = 0
         # get random index in list
         num = randrange(len(territories))
         # add corresponding territory to user
-        players[currentPlayer].addTerritory(TERRITORY(territories[num], players[currentPlayer]))
+        players[currentPlayer].addTerritory(territories[num])
         # remove territory from list
         territories.pop(num)
         # increment which players gets a territory
         currentPlayer = currentPlayer + 1
     # assign troops to territories
-    for player in players:
-        troopsAvailable = CONSTANTS.initializeNumTroops(numPlayers)
-        playerTerritories = player.getTerritories()
-        numTerritories = len(playerTerritories)
-        troopsAvailable = troopsAvailable - numTerritories  # territories are initialized with 1 troop
-        # while troops available, get random territory and add 1 troop
-        while troopsAvailable > 0:
-            index = randrange(len(player.getTerritories()))
-            playerTerritories[index].addTroops(1)
-            troopsAvailable = troopsAvailable - 1
+    troopsAvailable = CONSTANTS.initializeNumTroops(numPlayers)
+    troopsAvailable = troopsAvailable - numTerritories  # territories are initialized with 1 troop
+    # while troops available, get random territory and add 1 troop
+    while troopsAvailable > 0:
+        if currentPlayer == numPlayers:
+            currentPlayer = 0
+        index = randrange(len(currentPlayer.getTerritories()))
+        currentPlayer.getTerritories[index].setTroops(1)
+        #TODO: FIX THIS!
+        troopsAvailable = troopsAvailable - 1
+        # increment which players gets more troops
+        currentPlayer = currentPlayer + 1
 
     return players
 
@@ -55,7 +58,12 @@ class RISK:
         self.deck = DECK()
 
     def draft(self, user):
-        i = 1
+        # get troops from territories occupied
+        numTerritories = len(user.getTerritories())
+        numTroops = numTerritories / 3
+        if numTroops < 3:
+            numTroops = 3
+        # get troops from continents held
 
     def attack(self, user):
         i = 1

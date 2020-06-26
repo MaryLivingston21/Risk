@@ -1,12 +1,21 @@
 class TERRITORY:
 
-    def __init__(self, name, user):
+    def __init__(self, name, user, connectingTerritories):
         self.name = name
         self.user = user
         self.numTroops = 1
+        self.connectingTerritories = connectingTerritories
 
     def setUser(self, user):
         self.user = user
+
+    def setTroops(self, num):
+        if num > 0:
+            self.numTroops = self.numTroops + num
+        else:
+            self.numTroops = self.numTroops - num
+        if self.numTroops < 1:
+            print("ERROR with numTroops")
 
     def getUser(self):
         return self.user
@@ -17,8 +26,5 @@ class TERRITORY:
     def getNumTroops(self):
         return self.numTroops
 
-    def addTroops(self, num):
-        self.numTroops = self.numTroops + num
-
-    def removeTroops(self, num):
-        self.numTroops = self.numTroops - num
+    def getConnectingTerritories(self):
+        return self.connectingTerritories
