@@ -6,11 +6,11 @@ def main():
     playerNames = getUsers()
     game = RISK(playerNames)
 
-    # for user in game.getPlayers():
-    #     print("user: " + user.getName())
-    #     print("territories: ")
-    #     for territory in user.getTerritories():
-    #         print(territory.getName() + ": " + str(territory.getNumTroops()) + " ")
+    for user in game.getPlayers():
+        print("user: " + user.getName())
+        print("territories: ")
+        for territory in user.getTerritories():
+            print(territory.getName() + ": " + str(territory.getNumTroops()) + " ")
 
 
 def getUsers():

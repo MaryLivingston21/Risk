@@ -31,7 +31,7 @@ def setUpPlayers(playerNames):
         currentPlayer = currentPlayer + 1
     # assign troops to territories
     for player in players:
-        troopsAvailable = CONSTANTS.getNumTroops(numPlayers)
+        troopsAvailable = CONSTANTS.initializeNumTroops(numPlayers)
         playerTerritories = player.getTerritories()
         numTerritories = len(playerTerritories)
         troopsAvailable = troopsAvailable - numTerritories  # territories are initialized with 1 troop
@@ -63,9 +63,10 @@ class RISK:
     def fortify(self, user):
         i = 1
 
-    def getCards(self, user):
-        i = 1
-        # add card to user Deck iff they won an attack
+    def giveUserCard(self, user):
+        card = self.deck.getCard()
+        user.addCard(card)
+        self.deck.removeCard(card)
 
     def turnInCards(self, userDeck):
         self.numSetsTurnedIn = self.numSetsTurnedIn + 1

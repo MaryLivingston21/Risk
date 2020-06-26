@@ -1,3 +1,4 @@
+from random import randrange
 from Card import CARD
 from Constants import CONSTANTS
 constants = CONSTANTS()
@@ -8,6 +9,9 @@ class DECK:
     def __init__(self):
         self.cards = []
         self.initializeDeck()
+
+    def getCard(self, index):
+        return self.cards[randrange(len(self.cards))]
 
     def addCard(self, card):
         self.cards.append(card)

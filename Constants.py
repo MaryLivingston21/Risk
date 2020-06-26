@@ -83,7 +83,7 @@ class CONSTANTS:
                      EasternAustralia, Indonesia, NewGuinea, WesternAustralia]
 
     @classmethod
-    def getNumTroops(cls, numPlayers):
+    def initializeNumTroops(cls, numPlayers):
         if numPlayers == 3:
             return 35
         elif numPlayers == 4:
@@ -92,3 +92,14 @@ class CONSTANTS:
             return 25
         else:
             return 20
+
+    @classmethod
+    def getNumTroops(cls, user):
+        # get troops from territories occupied
+        numTerritories = len(user.getTerritories())
+        numTroops = numTerritories / 3
+        if numTroops < 3:
+            numTroops = 3
+        # get troops from continents held
+
+        return numTroops

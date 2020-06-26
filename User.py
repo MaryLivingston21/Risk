@@ -47,3 +47,8 @@ class USER:
 
     def getCards(self):
         return self.cards
+
+    def __eq__(self, other):
+        if isinstance(other, USER):
+            return self.name == other.name
+        return False
