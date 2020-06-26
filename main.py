@@ -19,7 +19,7 @@ def getUsers():
 
     while numUsers > 7 or numUsers < 3:
         try:
-            numUsers = int(input("Input number of users(2-6): "))
+            numUsers = int(input("Input number of users(3-6): "))
         except ValueError:
             numUsers = input("Input number of users: ")
 

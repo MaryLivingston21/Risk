@@ -4,7 +4,7 @@ class CONTINENT:
         self.territories = territories
         self.draftPoints = draftPoints
         self.criticalTerritoryNum = len(territories)
-        self.playerTerritoryCount  # length = num of players
+        self.playerTerritoryCount = [0,0,0,0] # length = num of players
 
     def getName(self):
         return self.name

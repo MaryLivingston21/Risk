@@ -18,7 +18,7 @@ def setUpPlayers(playerNames):
     territories = CONSTANTS.listOfTerritories
     numTerritories = len(territories)
     # while still territories, give them to the players
-    while territories != 0:
+    while len(territories) != 0:
         # ensure playerNum is in range of players
         if currentPlayer == numPlayers:
             currentPlayer = 0
@@ -30,20 +30,17 @@ def setUpPlayers(playerNames):
         territories.pop(num)
         # increment which players gets a territory
         currentPlayer = currentPlayer + 1
-    # assign troops to territories
-    troopsAvailable = CONSTANTS.initializeNumTroops(numPlayers)
-    troopsAvailable = troopsAvailable - numTerritories  # territories are initialized with 1 troop
-    # while troops available, get random territory and add 1 troop
-    while troopsAvailable > 0:
-        if currentPlayer == numPlayers:
-            currentPlayer = 0
-        index = randrange(len(currentPlayer.getTerritories()))
-        currentPlayer.getTerritories[index].setTroops(1)
-        #TODO: FIX THIS!
-        troopsAvailable = troopsAvailable - 1
-        # increment which players gets more troops
-        currentPlayer = currentPlayer + 1
-
+    for p in players:
+        # assign troops to territories
+        troopsAvailable = CONSTANTS.initializeNumTroops(numPlayers)
+        print("Troops available: " + str(troopsAvailable))
+        troopsAvailable = troopsAvailable - len(p.getTerritories())  # territories are initialized with 1 troop
+        # while troops available, get random territory and add 1 troop
+        while troopsAvailable > 0:
+            index = randrange(len(p.getTerritories()))
+            userTerritories = p.getTerritories()
+            p.adjustTroops(userTerritories[index], 1)
+            troopsAvailable = troopsAvailable - 1
     return players
 
 

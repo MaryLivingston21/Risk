@@ -22,15 +22,11 @@ class USER:
         return self.territories
 
     # Troop setters and getters
-    def addTroops(self, territory, numTroops):
+    def adjustTroops(self, territory, numTroops):
         for t in self.territories:
             if t.getName() == territory.getName():
-                t.addTroops(numTroops)
+                t.adjustTroops(numTroops)
 
-    def removeTroops(self, territory, numTroops):
-        for t in self.territories:
-            if t.getName() == territory.getName():
-                t.removeTroops(numTroops)
 
     def getTroops(self, territory):
         for t in self.territories:
