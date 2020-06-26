@@ -53,6 +53,7 @@ class RISK:
         self.userTurn = ""
         self.stage = ""
         self.deck = DECK()
+        self.continents = CONSTANTS.listOfContinents
 
     def draft(self, user):
         # get troops from territories occupied
@@ -61,6 +62,12 @@ class RISK:
         if numTroops < 3:
             numTroops = 3
         # get troops from continents held
+        for c in self.continents:
+            print(c.getName() + ": ")
+            if c.isOwnedByPlayer(user):
+                print("true")
+            else:
+                print("false")
 
     def attack(self, user):
         i = 1

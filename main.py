@@ -11,6 +11,8 @@ def main():
         print("territories: ")
         for territory in user.getTerritories():
             print(territory.getName() + ": " + str(territory.getNumTroops()) + " ")
+        game.draft(user)
+
 
 
 def getUsers():

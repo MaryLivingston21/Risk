@@ -1,10 +1,10 @@
+import User
+
 class CONTINENT:
     def __init__(self, name, territories, draftPoints):
         self.name = name
         self.territories = territories
         self.draftPoints = draftPoints
-        self.criticalTerritoryNum = len(territories)
-        self.playerTerritoryCount = [0,0,0,0] # length = num of players
 
     def getName(self):
         return self.name
@@ -12,6 +12,9 @@ class CONTINENT:
     def getTerritories(self):
         return self.territories
 
-    def isOwnedByOnePlayer(self):
-        # if playerTerritoryCount[i] = criticalNum, owned by one player
-        return False
+    def isOwnedByPlayer(self, player):
+        userTerritories = player.getTerritories()
+        for t in self.territories:
+            if t not in userTerritories:
+                return False
+        return True
