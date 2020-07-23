@@ -27,7 +27,6 @@ class USER:
             if t.getName() == territory.getName():
                 t.adjustTroops(numTroops)
 
-
     def getTroops(self, territory):
         for t in self.territories:
             if t.getName() == territory.getName():

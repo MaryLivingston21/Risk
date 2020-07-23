@@ -70,7 +70,19 @@ class RISK:
             else:
                 print("false")
 
-        #TODO: trade in cards
+        # Trade in cards
+        if canTradeInCards(user) > 0:
+            print("Would you like to trade in cards?(y/n)")
+
+    def canTradeInCards(self, user):
+        cards = user.getCards()
+        if len(cards) > 2:
+            # get type of first card
+            type1 = cards[0].getCardType
+        else:
+            print("You can't trade in any cards this turn")
+            return 0
+        # Todo: points for owning that country
 
     def attack(self, user):
         i = 1
@@ -85,7 +97,6 @@ class RISK:
 
     def turnInCards(self, userDeck):
         self.numSetsTurnedIn = self.numSetsTurnedIn + 1
-        # turn in cards function
 
     # remove user when defeated
     def removePlayer(self, player):
